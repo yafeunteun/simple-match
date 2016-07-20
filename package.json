@@ -1,7 +1,8 @@
 {
   "scripts": {
     "test": "mocha test.js",
-    "test-kitten": "mocha -R nyan test.js"
+    "test-kitten": "mocha -R nyan test.js",
+    "watch": "gulp watch"
   },
 
   "devDependencies": {
