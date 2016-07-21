@@ -1,6 +1,7 @@
 var assert = require('assert');
 var userMatching = require('./user-matching');
-
+var rewire = require("rewire");
+var userMatchingPrivateAPI = rewire("./user-matching");
 
 
 var  users = [
@@ -21,6 +22,14 @@ var  users = [
     {id:15,interests:'["libsvm", "regression", "support vector machines"]'}
   ];
 
+
+describe('Returns most frequent to least frequent element in an array', function() {
+  var someArray = ["apples","oranges","oranges","oranges","bananas","bananas","oranges"];
+  Array.prototype.byCount = userMatchingPrivateAPI.__get__("Array.prototype.byCount");
+  it('Works so well', function(){
+    assert.deepEqual(someArray.byCount(), [ 'oranges', 'bananas', 'apples' ]); 
+  });
+});
 
 
 describe('Returns the interests given a user id', function() {
