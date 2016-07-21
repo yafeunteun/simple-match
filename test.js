@@ -10,7 +10,7 @@ var  users = [
     {id:4,interests:'["Python", "scikit-learn", "scipy", "numpy", "statsmodels", "pandas"]'},
     {id:5,interests:'["machine learning", "regression", "decision trees", "libsvm"]'},
     {id:6,interests:'["Python", "R", "Java", "C++", "Haskell", "programming languages"]'},
-    {id:7,interests:'["statistics", "probability", "mathematics", "theory"]'},
+    {id:7,interests:'["regression", "statistics", "probability", "mathematics", "theory"]'},
     {id:8,interests:'["machine learning", "scikit-learn", "Mahout", "neural networks"]'},
     {id:9,interests:'["neural networks", "deep learning", "Big Data", "artificial intelligence"]'},
     {id:10,interests:'["Hadoop", "Java", "MapReduce", "Big Data"]'},
@@ -44,3 +44,14 @@ describe('Returns user ids that are interested by a given topic', function() {
   });
 
 });
+
+
+describe('Returns the user who has the most interests in common than the given user', function() {
+  var expectedResult = {id:3,interests:'["statistics", "regression", "probability"]'};
+  var aUser = {id:7,interests:'["regression","statistics", "probability", "mathematics", "theory"]'};
+  it('Returns the correct set of user for id:7', function(){
+    assert.deepEqual(userMatching.most_common_interests_with(aUser, users), expectedResult);
+  });
+});
+
+
